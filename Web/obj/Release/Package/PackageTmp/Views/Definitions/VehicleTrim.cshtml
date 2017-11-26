@@ -1,0 +1,60 @@
+﻿@model List<Models.Custom.VehicleTrimView>
+@{
+    ViewBag.Title = "Vehicle Trim";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<p class="text-right">
+    <span class="green">@ViewBag.Message</span>
+    <button type="button" class="btn btn-primary" onclick="window.location.href='/Definitions/NewVehicleTrim'">New</button>
+</p>
+@if (Model != null && Model.Count > 0)
+{
+    <table id="grid" class="display nowrap" cellspacing="0" style="width: 100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Vehicle Trim</th>
+                <th>IsActive</th>
+                <th>IsDeleted</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Vehicle Trim</th>
+                <th>IsActive</th>
+                <th>IsDeleted</th>
+                <th>Action</th>
+            </tr>
+        </tfoot>
+        <tbody>
+            @foreach (Models.Custom.VehicleTrimView item in Model)
+            {
+                <tr>
+                    <td>@item.vehicleTrim.Name</td>
+                    <td>@item.vehicleTrim.Description</td>
+                    <td>@item.modelName</td>
+                    <td>@(item.vehicleTrim.IsActive ? "Yes" : "No")</td>
+                    <td>@(item.vehicleTrim.IsDeleted ? "Yes" : "No")</td>
+                    <td><a href="@String.Concat("/Definitions/EditVehicleTrim?id=", item.vehicleTrim.VehicleTrimID)"><i class="fa fa-edit"></i></a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@section scripts {
+    <script>
+        $(function () {
+            $("#vehicleTrimListItem").addClass("current-page");
+            $('#grid').DataTable({
+                responsive: true
+            });
+        })
+    </script>
+}

@@ -1,0 +1,36 @@
+﻿@using Models.Custom
+@model CarView
+@{
+    
+}
+
+<div class="item  col-xs-12 col-md-6 col-lg-4">
+    <div class="thumbnail">
+        <div class="@(Model.car.Status == (int)Web.Helpers.DataHelper.CarStatus.Sold ? "" : "hide") itemSold">Sold</div>
+        <img class="group list-group-image" src="@String.Concat("../", Model.car.SmallImage)" alt="" />
+        <div class="caption">
+            <h4 class="group inner list-group-item-heading">
+                @String.Concat(Model.currencySymbol, String.Format("{0:#,###0}", Model.car.Price))
+            </h4>
+            <h4 class="group inner list-group-item-heading carName">
+                @String.Concat(Model.makeName, " ", Model.modelName, " ", Model.vehicleTrimName, " ", Model.car.Year)
+            </h4>
+            <p class="group inner list-group-item-text">
+                <span>Exterior: @Model.car.ExteriorColor</span><br />
+                <span>Interior: @Model.car.InteriorColor</span><br />
+                <span>Transmission: @Model.transmissionName</span><br />
+                <span>Mileage: @Model.car.Mileage</span><br />
+            </p>
+            <div class="row">
+                <div class="col-xs-12 col-md-6">
+                    <p class="lead">
+
+                    </p>
+                </div>
+                <div class="col-xs-12 col-md-6 text-right">
+                    @Html.ActionLink("Details", "CarDetails", "Inventory", new { carID = Model.car.CarID.ToString() }, new { @class = "btn btn-success" })
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

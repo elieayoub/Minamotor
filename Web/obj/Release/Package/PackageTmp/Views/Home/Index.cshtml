@@ -1,0 +1,85 @@
+﻿@using Models.Custom
+@{
+    ViewBag.Title = "Home page";
+}
+<div class="row">
+    <div class="col-md-9 mainBodyContent" style="/*height: 525px;*/ background-color: #fff; ">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Welcome to MinaMotor.com</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <p>Best cars in Mina, Tripoli, Lebanon</p>
+                <p><i class="fa fa-whatsapp"></i>&nbsp;<i class="fa fa-phone"></i> +961 3 978 228</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-9 mainBodyContent">
+        <div class="row">
+            @if (ViewBag.WebCarListViewListSpecial != null)
+            {
+                <div class="col-md-8">
+                    @foreach (WebCarListView item in ViewBag.WebCarListViewListSpecial)
+                    {
+
+                        <ul class="sliderList">
+                            <li>
+                                <a href="/Inventory/CarDetails?carID=@item.carID.ToString()">
+                                    <img src="@String.Concat("../", item.largeImage)" title="@String.Concat(item.makeName, " ", item.modelName, " ", item.vehicleTrimName, " ", item.year)" />
+                                </a>
+                            </li>
+                        </ul>
+                    }
+                </div>
+            }
+            @if (ViewBag.WebCarListViewListFeatured != null)
+            {
+                <div class="col-md-4">
+                    @foreach (WebCarListView item in ViewBag.WebCarListViewListFeatured)
+                    {
+
+                        <ul class="sliderList">
+                            @foreach (var photo in item.carImage)
+                            {
+                                <li>
+                                    <a href="/Inventory/CarDetails?carID=@item.carID.ToString()">
+                                        <img src="@String.Concat("../", photo.Image)" title="@String.Concat(item.makeName, " ", item.modelName, " ", item.vehicleTrimName, " ", item.year)" />
+                                    </a>
+                                </li>
+                            }
+                        </ul>
+                    }
+                </div>
+            }
+        </div>
+
+
+
+    </div>
+    <div class="col-md-3" style="padding: 0">
+        @Html.Partial("_SearchGrid", null)
+    </div>
+</div>
+
+@section scripts {
+    <script src="../slider/jquery.bxslider.min.js"></script>
+    <script>
+        $(function () {
+            $(".topMenu li").removeClass("active").addClass("inactive");
+            $(".homeListItem").removeClass("inactive").addClass("active");
+
+            $('.sliderList').bxSlider({
+                mode: 'fade',
+                auto: true,
+                touchEnabled: true,
+                pager: false,
+                controls: false,
+                autoHover: true,
+                captions: true,
+                pause: 2000
+            });
+        })
+    </script>
+}

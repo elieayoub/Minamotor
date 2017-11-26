@@ -1,0 +1,23 @@
+﻿@using Web.Models
+@model InventoryListView
+@{
+    ViewBag.Title = "Inventory";
+}
+
+<div class="row">
+    <div class="col-md-9" style="/*height: 525px;*/ background-color: #fff; ">
+        @Html.Partial("_InventoryList", Model.carViewList)
+    </div>
+    <div class="col-md-3" style="padding: 0">
+        @Html.Partial("_SearchGrid", Model.searchGridView)
+    </div>
+</div>
+
+@section scripts {
+    <script>
+        $(function () {
+            $(".topMenu li").removeClass("active").addClass("inactive");
+            $(".dropdownListItem").removeClass("inactive").addClass("active");
+        })
+    </script>
+}

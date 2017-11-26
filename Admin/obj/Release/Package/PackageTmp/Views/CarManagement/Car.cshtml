@@ -1,0 +1,68 @@
+﻿@model List<Models.Custom.CarView>
+@{
+    ViewBag.Title = "Car";
+}
+
+@if (Model != null && Model.Count > 0)
+{
+    <p class="text-right">
+        <span class="green">@ViewBag.Message</span>
+        <button type="button" class="btn btn-primary" onclick="window.location.href='/CarManagement/NewCar'">New</button>
+    </p>
+    <table id="grid" class="display nowrap" cellspacing="0" style="width: 100%">
+        <thead>
+            <tr>
+                <th>Make</th>
+                <th>Model</th>
+                <th>Price</th>
+                <th>Currency</th>
+                <th>Body Style</th>
+                <th>Transmission</th>
+                <th>Condition</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>Make</th>
+                <th>Model</th>
+                <th>Price</th>
+                <th>Currency</th>
+                <th>Body Style</th>
+                <th>Transmission</th>
+                <th>Condition</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </tfoot>
+        <tbody>
+            @foreach (Models.Custom.CarView item in Model)
+            {
+                <tr>
+                    <td>@item.makeName</td>
+                    <td>@item.modelName</td>
+                    <td>@item.car.Price</td>
+                    <td>@item.currencySymbol</td>
+                    <td>@item.car.BodyStyle</td>
+                    <td>@item.transmissionName</td>
+                    <td>@item.conditionName</td>
+                    <td>@item.statusName</td>
+                    <td><a href="@String.Concat("/CarManagement/EditCar?id=", item.car.CarID)"><i class="fa fa-edit"></i></a> &nbsp; <a href="@String.Concat("/CarManagement/CarImages?carID=", item.car.CarID)"><i class="fa fa-photo"></i></a></td>
+                    @*<a href="@String.Concat("/CarManagement/CarList?carID=", item.car.CarID)"><i class="fa fa-list"></i></a>*@
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@section scripts {
+    <script>
+        $(function () {
+            $("#carListItem").addClass("current-page");
+            $('#grid').DataTable({
+                responsive: true
+            });
+        })
+    </script>
+}

@@ -1,0 +1,74 @@
+﻿@using Models;
+@{
+    ViewBag.Title = "Car List";
+    string _carID = Request.QueryString["carID"];
+    List<List> _lstAvailable = ViewBag.AvailableList as List<List>;
+    List<List> _lstSelected = ViewBag.SelectedList as List<List>;
+}
+
+
+@using (Html.BeginForm("AddCarToList", "CarManagement", FormMethod.Post, new { @novalidate = "novalidate", @class = "form-horizontal form-label-left" }))
+{
+    @Html.Hidden("CarID", @_carID)
+    <input type="hidden" id="hfSelectedIds" name="hfSelectedIds" />
+    <div class="row">
+        <div class="col-md-3 col-md-offset-3">
+            <p>Available</p>
+            <p>
+                <select name="selectfrom" id="select-from" multiple size="5">
+                    @foreach (var item in _lstAvailable)
+                    {
+                        <option value="@item.ListID">@item.Name</option>
+                    }
+                </select>
+                <a href="JavaScript:void(0);" id="btn-add">Add &raquo;</a>
+            </p>
+        </div>
+        <div class="col-md-6">
+            <p>Selected</p>
+            <p>
+                <a href="JavaScript:void(0);" id="btn-remove">&laquo; Remove</a>
+                <select name="selectto" id="selectto" multiple size="5">
+                    @foreach (var item in _lstSelected)
+                    {
+                        <option value="@item.ListID">@item.Name</option>
+                    }
+                </select>
+            </p>
+        </div>
+    </div>
+    <div class="ln_solid"></div>
+    <div class="form-group">
+        <div class="col-md-6 col-md-offset-3 text-right">
+            <button id="btnCancel" type="button" class="btn btn-danger" onclick="window.location.href='/CarManagement/Car'">Cancel</button>
+            <button id="btnSubmit" type="submit" class="btn btn-success">Submit</button>
+        </div>
+    </div>
+}
+@section scripts {
+    <script>
+        $(function () {
+            $("#carListItem").addClass("current-page");
+            $("#carListItem").parent().css("display", "block");
+            $("#carListItem").parent().parent().addClass("active");
+
+            $('#btn-add').click(function () {
+                $('#select-from option:selected').each(function () {
+                    $('#selectto').append("<option value='" + $(this).val() + "'>" + $(this).text() + "</option>");
+                    var _value = $("#hfSelectedIds").val();
+                    $("#hfSelectedIds").val(_value + $(this).val() + ",");
+                    $(this).remove();
+                });
+            });
+            $('#btn-remove').click(function () {
+                $('#selectto option:selected').each(function () {
+                    $('#select-from').append("<option value='" + $(this).val() + "'>" + $(this).text() + "</option>");
+                    var _value = $("#hfSelectedIds").val();
+                    _value = _value.replace($(this).val() + ",", "");
+                    $("#hfSelectedIds").val(_value);
+                    $(this).remove();
+                });
+            });
+        })
+    </script>
+}

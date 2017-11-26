@@ -1,0 +1,293 @@
+﻿@using Models.Custom
+@using Web.Helpers
+@model CarDetailsView
+@{
+    string _largeImage = "../Images/nopreview.png";
+    if (Model.car.LargeImage != null && Model.car.LargeImage != "")
+    {
+        _largeImage = Model.car.LargeImage;
+    }
+    string _description = null, _standardEquipment = null;
+    if (Model.car.Description != null && Model.car.Description != "")
+    {
+        _description = Model.car.Description.Replace("\n", "<br />");
+    }
+    if (Model.car.StandardEquipment != null && Model.car.StandardEquipment != "")
+    {
+        _standardEquipment = Model.car.StandardEquipment.Replace("\n", "<br />");
+    }
+    string _url = Request.Url.ToString();
+    string _imgVersion = String.Concat("?v=", Guid.NewGuid());
+    ViewBag.FacebookURL = Request.Url;
+    ViewBag.FacebookTitle = "Mina Motor";
+    ViewBag.FacebookDescription = String.Concat("Check this car: ", Model.makeName, " ", Model.modelName, " ", Model.vehicleTrimName, " ", Model.car.Year);
+    ViewBag.FacebookImage = @String.Concat("http://www.minamotor.com/", _largeImage, _imgVersion);
+    ViewBag.FacebookImageSecured = @String.Concat("https://www.minamotor.com/", _largeImage, _imgVersion);
+    ViewBag.Title = "Car Details";
+}
+<div class="detailsContent">
+    <div class="row">
+        <div class="col-md-12">
+            <section>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>@String.Concat(Model.makeName, " ", Model.modelName, " ", Model.vehicleTrimName, " ", Model.car.Year)</h1>
+                        <table style="border:0; padding:0; margin:0;">
+                            <tr>
+                                @*<td style="padding-bottom: 6px;">
+                                    <a class="fbShare" href="@String.Concat("https://www.facebook.com/sharer/sharer.php?u=", _url, "&picture=", _webLargeImage, "&title=", _fbTitle, "&description=", _fbDescription)" target="_blank">Share</a>
+                                    @*<div class="fb-share-button" data-href="@_url" data-layout="button_count" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="@String.Concat(String.Format("https://www.facebook.com/sharer/sharer.php?u=", _url), "&picture=http%3A%2F%2Fwww.minamotor.com%2FImages%2Flogo.png")">Share</a></div>
+                                   <div id="btnShare" class="btn btn-success clearfix">Share</div>
+                                </td>*@
+                                @*<td>
+                                    <a href="whatsapp://send" id="btnShare" data-text="Check out this car on minamotor.com" data-href="" class="wa_btn wa_btn_s" style="display:none">Share</a>
+                                </td>*@
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="@String.Concat("../", _largeImage)" class="detailsLargeImage" alt="details large image" />
+                    </div>
+                    <div class="col-md-6 vehicleDetailsContent">
+                        <ul class="list-group vehicleDetailsList">
+                            <li class="list-group-item"> <span class="strong">Price</span> <span class="pull-right">@String.Concat(Model.currencySymbol, String.Format("{0:#,###0}", Model.car.Price))</span></li>
+                            <li class="list-group-item"> <span class="strong">Year</span> <span class="pull-right">@Model.car.Year</span></li>
+                            <li class="list-group-item"> <span class="strong">Make</span> <span class="pull-right">@Model.makeName</span></li>
+                            <li class="list-group-item"> <span class="strong">Model</span> <span class="pull-right">@Model.modelName</span></li>
+                            <li class="list-group-item"> <span class="strong">Vehicle Trim</span> <span class="pull-right">@Model.vehicleTrimName</span></li>
+                            <li class="list-group-item"> <span class="strong">Body style</span> <span class="pull-right">@Model.car.BodyStyle</span></li>
+                            <li class="list-group-item">
+                                <span class="strong">
+                                    Mileage
+                                </span>
+                                <span class="pull-right">@Model.car.Mileage</span>
+                            </li>
+                            <li class="list-group-item">
+                                <span class="strong">Transmission</span>
+                                <span class="pull-right">@Model.transmissionName</span>
+                            </li>
+                            <li class="list-group-item"> <span class="strong">Engine</span> <span class="pull-right">@Model.car.Engine</span></li>
+                            <li class="list-group-item"> <span class="strong">Drivetrain</span> <span class="pull-right">@Model.car.Drivetrain</span></li>
+                            <li class="list-group-item"> <span class="strong">Exterior color</span> <span class="pull-right">@Model.car.ExteriorColor</span></li>
+                            <li class="list-group-item"> <span class="strong">Interior color</span> <span class="pull-right">@Model.car.InteriorColor</span></li>
+                            <li class="list-group-item"> <span class="strong">Doors</span> <span class="pull-right">@Model.car.Doors</span></li>
+                            <li class="list-group-item"> <span class="strong">VIN</span> <span class="pull-right">@Model.car.vin</span></li>
+                            <li class="list-group-item">
+                                <span class="strong">Condition</span>
+                                <span class="pull-right">@Model.conditionName</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="detailsTabularContent">
+                <ul class="nav nav-pills">
+                    @if (_description != null)
+                    {
+                        <li class="active">
+                            <a href="#1b" data-toggle="tab">Description</a>
+                        </li>
+                    }
+                    @if (_standardEquipment != null)
+                    {
+                        <li>
+                            <a href="#2b" data-toggle="tab">Standard Equipment</a>
+                        </li>
+                    }
+                </ul>
+
+                <div class="tab-content clearfix detailsTabularContentBody">
+                    @if (_description != null)
+                    {
+                        <div class="tab-pane active" id="1b">
+                            @Html.Raw(_description)
+                        </div>
+                    }
+                    @if (_standardEquipment != null)
+                    {
+                        <div class="tab-pane" id="2b">
+                            @Html.Raw(_standardEquipment)
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 detailsImages">
+            @if (Model.carImage != null && Model.carImage.Count > 0)
+            {
+                foreach (var item in Model.carImage)
+                {
+                    <img src="@String.Concat("../", item.Image)" alt="" />
+                }
+            }
+        </div>
+    </div>
+</div>
+
+<div class="emailIconContainer">
+    <div id="mobile_invitation_container" style="display:block">
+        <div class="invitation_message" style="display:none">
+            <div id="invitation_message_text"></div>
+        </div>
+        <div id="operator_avatar_container">
+            <div id="operator_avatar">
+                <span class="fa fa-envelope"></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="emailMessageContainer" style="display: none">
+    <form class="well form-horizontal" action="/Inventory/ContactUs" method="post" id="contact_form">
+        <fieldset>
+
+            <legend>Contact Us</legend>
+
+            <input type="hidden" id="hfMakeName" name="hfMakeName" value="@Model.makeName" />
+            <input type="hidden" id="hfModelName" name="hfModelName" value="@Model.modelName" />
+            <input type="hidden" id="hfYear" name="hfYear" value="@Model.car.Year" />
+            <input type="hidden" id="hfVIN" name="hfVIN" value="@Model.car.vin" />
+
+            <div class="form-group">
+                <div class="col-md-12 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input name="firstName" id="firstName" placeholder="First Name*" class="form-control" type="text" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-12 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input name="email" id="email" placeholder="Email*" class="form-control" type="email" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-12 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+                        <input name="phone" id="phone" placeholder="Phone*" class="form-control" type="text" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-12 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                        <textarea class="form-control" name="message" id="message" placeholder="Message"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="alert alert-success hide" role="alert" id="success_message">Thank you for contacting us, we will get back to you shortly.</div>
+            <div class="alert alert-danger hide" role="alert" id="error_message">Error occured</div>
+            <div class="alert alert-danger hide" role="alert" id="error_required">First Name, Email and Phone are required</div>
+            <!-- Button -->
+            <div class="form-group">
+                <div class="col-md-12 text-right">
+                    <button type="button" class="btn btn-danger btnCloseContactUs">Close <span class="fa fa-times"></span></button>
+                    <button type="submit" class="btn btn-primary btnSubmitContactUs">Send <span class="glyphicon glyphicon-send"></span></button>
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+</div>
+
+<div class="phoneNumberBoxContainer">
+    <div class="phoneNumberBox">
+        <i class="fa fa-whatsapp"></i>
+        <span class="fa fa-phone">&nbsp; +961 3 978 228</span>
+    </div>
+</div>
+
+
+@section scripts {
+    <script>
+        $(function () {
+            $(".topMenu li").removeClass("active").addClass("inactive");
+            $(".dropdownListItem").removeClass("inactive").addClass("active");
+        })
+
+        $("#mobile_invitation_container").click(function () {
+            $(".emailIconContainer").hide();
+            $(".emailMessageContainer").show();
+        });
+
+        $(".btnCloseContactUs").click(function () {
+            $(".emailIconContainer").show();
+            $(".emailMessageContainer").hide();
+        });
+
+        $(".btnSubmitContactUs").click(function () {
+            var car = { firstName: $("#firstName").val(), email: $("#email").val(), phone: $("#phone").val(), message: $("#message").val(), hfMakeName: $("#hfMakeName").val(), hfModelName: $("#hfModelName").val(), hfYear: $("#hfYear").val(), hfVIN: $("#hfVIN").val() };
+            $("#contact_form").validate({
+                rules: {
+                    firstName: {
+                        required: true,
+                    },
+                    email: {
+                        required: true,
+                    },
+                    phone: {
+                        required: true,
+                    },
+                },
+                messages: {
+                    firstName: {
+                        required: "Please enter first",
+                    },
+                    email: {
+                        required: "Please enter middle",
+                    },
+                    phone: {
+                        required: "Please Select logo",
+                    },
+                }
+            });
+            if ($("#contact_form").valid()) {
+                $.ajax({
+                    type: "POST",
+                    url: "/Inventory/ContactUs",
+                    data: car,
+                    datatype: "json",
+                    success: function (data) {
+                        if (data != null && data == 1) {
+                            $("#success_message").removeClass("hide")
+                            if (!$("#error_message").hasClass("hide"))
+                                $("#error_message").addClass("hide")
+                            if (!$("#error_required").hasClass("hide"))
+                                $("#error_required").addClass("hide");
+                        }
+                        else if (data != null && data == 2) {
+                            $("#error_message").removeClass("hide");
+                            if (!$("#success_message").hasClass("hide"))
+                                $("#success_message").addClass("hide");
+                            if (!$("#error_required").hasClass("hide"))
+                                $("#error_required").addClass("hide");
+                        }
+                    }
+                });
+            } else {
+                $("#error_required").removeClass("hide");
+                $("#error_message").addClass("hide")
+                $("#success_message").addClass("hide")
+            }
+            return false;
+        });
+    </script>
+    <script type="text/javascript" src="../Scripts/whatsapp-button.js"></script>
+}

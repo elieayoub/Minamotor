@@ -1,0 +1,57 @@
+﻿@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+<form class="form-horizontal form-label-left" id="frmLogin" novalidate method="post" action="Authenticate">
+    <p>
+        Please insert your login information
+    </p>
+    <span class="section">Login Info</span>
+    <p class ="red text-center">@ViewBag.Message</pclass>
+    <div class="item form-group">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="username">
+            Username <span class="required">*</span>
+        </label>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <input type="text" id="username" name="username" required="required" class="form-control">
+        </div>
+    </div>
+    <div class="item form-group">
+        <label for="password" class="control-label col-md-3">
+            Password <span class="required">*</span>
+        </label>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <input id="password" type="password" name="password" class="form-control" required="required">
+        </div>
+    </div>
+    <div class="ln_solid"></div>
+    <div class="form-group">
+        <div class="col-md-6 col-md-offset-3 text-right">
+            <button id="send" type="submit" class="btn btn-success">Submit</button>
+        </div>
+    </div>
+</form>
+
+@section scripts {
+    <script type="text/javascript">
+        $(function () {
+            $("#username").focus();
+        })
+
+        $('form').submit(function (e) {
+            e.preventDefault();
+            var submit = true;
+
+            // evaluate the form using generic validaing
+            if (!validator.checkAll($(this))) {
+                submit = false;
+            }
+
+            if (submit)
+                this.submit();
+
+            return false;
+        });
+    </script>
+}

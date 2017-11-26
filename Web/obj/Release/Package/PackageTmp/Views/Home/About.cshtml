@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "About Us";
+}
+<h2>@ViewBag.Title</h2>
+
+<p>Mina Motor is the premier car dealership in the Mina, Tripoli and North of Lebanon, offering a great selection of quality pre-owned vehicles to fit any budget.</p>
+
+@section scripts {
+    <script>
+        $(function () {
+            $(".topMenu li").removeClass("active").addClass("inactive");
+            $(".aboutListItem").removeClass("inactive").addClass("active");
+        })
+    </script>
+}

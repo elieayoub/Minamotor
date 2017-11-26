@@ -1,0 +1,517 @@
+﻿body {
+    padding:0;
+    margin:0;
+}
+
+.divTable
+{
+    display: table;
+    border:0; 
+    padding:0; 
+    margin:0;
+}
+
+
+.divRow
+{
+    display: table-row;
+}
+
+.divCell
+{
+    display: table-cell;
+}
+
+/* google translate fixes */
+/*.caption .list-group-item-text span
+{
+    display: block;
+}*/
+/* google translate fixes */
+
+/* header */
+.header-section {
+    background: url("../Images/webHeaderBackgroundResized.png");
+    background-position: 0 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.navbarToggleDescription
+{
+    background: none !important;
+    border: 0 !important;
+    cursor: pointer;
+    color: #FFF;
+    margin-right: 0 !important;
+}
+
+.dropdown-menu
+{
+    background-color: lightblue !important;
+    color: black !important;
+}
+
+.dropdown-menu a 
+{
+       color: black !important;
+}
+
+.dropdown-menu a:hover
+{
+       color: white !important;
+}
+
+.topMenuContainer
+{
+    background: #1e5799; /* Old browsers */
+background: -moz-linear-gradient(top,  #1e5799 0%, #2989d8 50%, #207cca 51%, #7db9e8 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#7db9e8',GradientType=0 ); /* IE6-9 */
+}
+
+.topMenuContainer .navbar-nav > .inactive > a {
+background: #1e5799; /* Old browsers */
+background: -moz-linear-gradient(top,  #1e5799 0%, #2989d8 50%, #207cca 51%, #7db9e8 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#7db9e8',GradientType=0 ); /* IE6-9 */
+color: white;
+}
+
+.topMenuContainer .navbar-nav > .inactive > a:hover {
+background: #1e5799; /* Old browsers */
+background: -moz-linear-gradient(top,  #1e5799 0%, #2989d8 50%, #207cca 51%, #7db9e8 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#7db9e8',GradientType=0 ); /* IE6-9 */
+}
+
+.topMenuContainer .navbar-nav > .dropdown > a .caret {
+    border-top-color: #FFF;
+    border-bottom-color: #FFF;
+}
+
+.topMenuContainer li.active, .topMenuContainer li.active:hover, .topMenuContainer li.active > a:hover, .topMenuContainer .nav > .open > a
+{
+    background-color: #000;
+}
+
+.topMenuContainer .icon-bar
+{
+    background-color: #FFF;
+}
+
+.topMenuContainer li.active > a{
+    color: #FFF !important;
+}
+
+.logo
+{
+    max-width: 300px;
+    max-height: 115px;
+}
+
+.top-address {
+    text-align: right;
+    font-size: 16px;
+    font-weight: normal;
+    color: white;
+    padding: 15px 15px;
+    font-weight: bold;
+}
+
+.header-social-link ul li {
+    display: inline-block;
+    vertical-align: top;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.header-social-link ul li a.facebook {
+    background: #3B559F;
+}
+
+.header-social-link ul li a {
+    display: block;
+    width: 38px;
+    height: 38px;
+    text-align: center;
+    color: #fff;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    line-height: 38px;
+    background-color: #6b6b6b;
+    font-size: 22px;
+}
+
+.removePaddingLeft
+{
+    padding-left: 0 !important;
+}
+/* header */
+
+/* home left search */
+#bookingForm {
+    padding-bottom: 13px !important;
+}
+#bookingForm {
+    background: #3b5796;
+    color: #fff;
+}
+#bookingForm {
+    padding-top: 14px !important;
+    padding-bottom: 6px !important;
+}
+
+.search-form {
+    padding: 22px 0 17px 0;
+    background-color: #ebeaea;
+    font-size: 13px;
+    font-weight: normal;
+    border: 1px solid #FFF;
+}
+/* home left search */
+
+/* Inventory List */
+.carName
+{
+    height: 40px;
+}
+
+.glyphicon { margin-right:5px; }
+.thumbnail
+{
+    margin-bottom: 20px;
+    padding: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+}
+
+.item.list-group-item
+{
+    float: none;
+    width: 100%;
+    background-color: #fff;
+    margin-bottom: 10px;
+}
+.item.list-group-item:nth-of-type(odd):hover,.item.list-group-item:hover
+{
+    background: #428bca;
+}
+
+.item.list-group-item .list-group-image
+{
+    margin-right: 10px;
+}
+.item.list-group-item .thumbnail
+{
+    margin-bottom: 0px;
+}
+.item.list-group-item .caption
+{
+    padding: 9px 9px 0px 9px;
+}
+.item.list-group-item:nth-of-type(odd)
+{
+    background: #eeeeee;
+}
+
+.item.list-group-item:before, .item.list-group-item:after
+{
+    display: table;
+    content: " ";
+}
+
+.item.list-group-item img
+{
+    float: left;
+}
+.item.list-group-item:after
+{
+    clear: both;
+}
+.list-group-item-text
+{
+    margin: 0 0 11px;
+}
+.itemSold
+{
+    position:absolute; 
+    width: 45px; 
+    height: 30px; 
+    background-color: #FF0000; 
+    color: #FFF; 
+    padding: 5px; 
+    font-weight: bold;
+}
+/* Inventory List */
+
+/* Details */
+.detailsContent h1 {
+
+}
+
+.detailsContent img.detailsLargeImage {
+    width: 100%;
+    float: left;
+    display: block;
+    border: thin solid #ddd;
+    box-shadow: 0 0 3px rgba(0,0,0,0.13);
+}
+
+.detailsContent .vehicleDetailsContent 
+{
+    font-size: 0.85em;
+}
+.detailsContent .vehicleDetailsContent .strong {
+    font-weight: bold;
+}
+.detailsContent .vehicleDetailsContent .vehicleDetailsList
+{
+    float: left;
+    width: 100%;
+}
+
+.detailsContent .detailsTabularContent
+{
+    margin-top: 30px;
+}
+
+.detailsContent .detailsTabularContent .detailsTabularContentBody
+{
+    margin-top: 10px;
+        background-color: #EEE;
+    padding: 5px;
+}
+
+.detailsContent .detailsImages img
+{
+    margin-top: 20px;
+    width: 100%;
+}
+
+#mobile_invitation_container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+    font-size: .9em;
+}
+
+#mobile_invitation_container:hover
+{
+    cursor: pointer;
+}
+
+.invitation_message {
+    margin-right: 1em;
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%;
+}
+
+#invitation_message_text {
+    float: right;
+    color: #4a546c;
+    background: #e7eaf1;
+    border-radius: .3em;
+    font-size: 1em;
+    padding: .7em .9em;
+    margin-right: .8em;
+    max-height: 3.2em;
+    line-height: 1.15em;
+    overflow: hidden;
+    display: block;
+    border: 1px solid rgba(0,0,0,.07);
+    box-shadow: 0 1px 5px rgba(0,0,0,.1);
+    margin-left: .5em;
+}
+
+#operator_avatar_container {
+    display: table-cell;
+    padding: .1em;
+}
+
+#operator_avatar {
+    background-color: #4a83bb;
+    float: right;
+    border-radius: 50%;
+    width: 4.5em;
+    height: 4.5em;
+    box-shadow: 0 1px 3px rgba(0,0,0,.2);
+    border: .3em solid #fff;
+    box-sizing: content-box;
+    overflow: hidden;
+    color: #fff;
+    text-align: center;
+    position: relative;
+}
+
+.fa-envelope {
+    line-height: 4.5em!important;
+}
+
+.fa-envelope:before {
+    font-size: 1.8em;
+}
+
+.emailIconContainer
+{
+    position: fixed; 
+    bottom: 22px; 
+    right: 45px; 
+    width: 75px; 
+    height: 80px; 
+    overflow: hidden; 
+    visibility: visible; 
+    z-index: 2147483639; 
+    border: 0px; 
+    transition: transform 0.2s ease-in-out; 
+    backface-visibility: hidden; 
+    opacity: 1; 
+    transform: translateY(0%); 
+    background: transparent;
+}
+
+.emailMessageContainer
+{
+    position: fixed; 
+    bottom: 0px; 
+    right: 15px; 
+    width: 250px; 
+    overflow: hidden; 
+    visibility: visible; 
+    z-index: 2147483639; 
+    border: 0px; 
+    transition: transform 0.2s ease-in-out; 
+    backface-visibility: hidden; 
+    opacity: 1; 
+    transform: translateY(0%); 
+    background: transparent;
+}
+
+.phoneNumberBoxContainer
+{
+    position: fixed; 
+    bottom: 0px; 
+    right: 15px; 
+    overflow: hidden; 
+    visibility: visible; 
+    z-index: 2147483639; 
+    border: 0px; 
+    transition: transform 0.2s ease-in-out; 
+    backface-visibility: hidden; 
+    opacity: 1; 
+    transform: translateY(0%); 
+    background: transparent;
+}
+
+.phoneNumberBox
+{
+    background-color: #4a83bb;
+    float: right;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    width: 160px; 
+    box-shadow: 0 1px 3px rgba(0,0,0,.2);
+    border: .3em solid #fff;
+    box-sizing: content-box;
+    overflow: hidden;
+    color: #fff;
+    text-align: center;
+    position: relative;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.fbShare
+{
+    background-image: url("../Images/fbShare_r.png");
+    background-repeat: no-repeat;
+    display: block;
+    width: 60px;
+    height: 20px;
+    text-indent: -9999px;
+}
+/* Details */
+
+/* Body */
+.body-content .mainBodyContent {
+    /*padding: 0;*/
+}
+/* Body */
+
+/* Car List */
+.homeCarListImage
+{
+    width: 100%;
+}
+/* Car List */
+
+/* Home */
+.sliderList
+{
+    padding:0;
+    margin:0 0 20px 0;
+}
+/* Home */
+
+@media (max-width: 979px) {
+  .emailIconContainer
+{
+    position: fixed; 
+    bottom: 72px; 
+    right: 45px; 
+    width: 75px; 
+    height: 80px; 
+    overflow: hidden; 
+    visibility: visible; 
+    z-index: 2147483639; 
+    border: 0px; 
+    transition: transform 0.2s ease-in-out; 
+    backface-visibility: hidden; 
+    opacity: 1; 
+    transform: translateY(0%); 
+    background: transparent;
+}
+
+.emailMessageContainer
+{
+    position: fixed; 
+    bottom: 0px; 
+    right: 15px; 
+    width: 250px; 
+    overflow: hidden; 
+    visibility: visible; 
+    z-index: 2147483639; 
+    border: 0px; 
+    transition: transform 0.2s ease-in-out; 
+    backface-visibility: hidden; 
+    opacity: 1; 
+    transform: translateY(0%); 
+    background: transparent;
+    margin-bottom: 50px;
+}
+
+.phoneNumberBoxContainer
+{
+    position: fixed; 
+    bottom: 0px; 
+    right: 15px; 
+    overflow: hidden; 
+    visibility: visible; 
+    z-index: 2147483639; 
+    border: 0px; 
+    transition: transform 0.2s ease-in-out; 
+    backface-visibility: hidden; 
+    opacity: 1; 
+    transform: translateY(0%); 
+    background: transparent;
+    margin-bottom: 50px;
+}
+}

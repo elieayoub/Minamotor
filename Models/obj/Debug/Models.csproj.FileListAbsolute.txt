@@ -1,0 +1,28 @@
+C:\#Elie Files\Work\Freelance\Minamotor.com\Site\Models\bin\Debug\Models.dll.config
+C:\#Elie Files\Work\Freelance\Minamotor.com\Site\Models\bin\Debug\Models.dll
+C:\#Elie Files\Work\Freelance\Minamotor.com\Site\Models\bin\Debug\Models.pdb
+C:\#Elie Files\Work\Freelance\Minamotor.com\Site\Models\bin\Debug\EntityFramework.dll
+C:\#Elie Files\Work\Freelance\Minamotor.com\Site\Models\bin\Debug\EntityFramework.SqlServer.dll
+C:\#Elie Files\Work\Freelance\Minamotor.com\Site\Models\bin\Debug\EntityFramework.xml
+C:\#Elie Files\Work\Freelance\Minamotor.com\Site\Models\bin\Debug\EntityFramework.SqlServer.xml
+C:\#Elie Files\Work\Freelance\Minamotor.com\Site\Models\obj\Debug\Models.dll
+C:\#Elie Files\Work\Freelance\Minamotor.com\Site\Models\obj\Debug\Models.pdb
+E:\Work\Minamotor.com\Site\Models\bin\Debug\Models.dll.config
+E:\Work\Minamotor.com\Site\Models\bin\Debug\Models.dll
+E:\Work\Minamotor.com\Site\Models\bin\Debug\Models.pdb
+E:\Work\Minamotor.com\Site\Models\bin\Debug\EntityFramework.dll
+E:\Work\Minamotor.com\Site\Models\bin\Debug\EntityFramework.SqlServer.dll
+E:\Work\Minamotor.com\Site\Models\bin\Debug\EntityFramework.xml
+E:\Work\Minamotor.com\Site\Models\bin\Debug\EntityFramework.SqlServer.xml
+E:\Work\Minamotor.com\Site\Models\obj\Debug\Models.dll
+E:\Work\Minamotor.com\Site\Models\obj\Debug\Models.pdb
+E:\Work\Minamotor.com\Site\Models\obj\Debug\Models.csprojResolveAssemblyReference.cache
+D:\Work\Minamotor.com\Site\Models\bin\Debug\Models.dll.config
+D:\Work\Minamotor.com\Site\Models\bin\Debug\Models.dll
+D:\Work\Minamotor.com\Site\Models\bin\Debug\Models.pdb
+D:\Work\Minamotor.com\Site\Models\bin\Debug\EntityFramework.dll
+D:\Work\Minamotor.com\Site\Models\bin\Debug\EntityFramework.SqlServer.dll
+D:\Work\Minamotor.com\Site\Models\bin\Debug\EntityFramework.xml
+D:\Work\Minamotor.com\Site\Models\bin\Debug\EntityFramework.SqlServer.xml
+D:\Work\Minamotor.com\Site\Models\obj\Debug\Models.dll
+D:\Work\Minamotor.com\Site\Models\obj\Debug\Models.pdb

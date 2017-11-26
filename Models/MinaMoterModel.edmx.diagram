@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e151f029d9c0439194fda46673d2dfa8" Name="Diagram1">
+        <EntityTypeShape EntityType="MinamotorModel.Car" Width="1.5" PointX="5.25" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MinamotorModel.CarList" Width="1.5" PointX="7.5" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MinamotorModel.Currency" Width="1.5" PointX="3" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MinamotorModel.List" Width="1.5" PointX="5.25" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MinamotorModel.Make" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MinamotorModel.Model" Width="1.5" PointX="3" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MinamotorModel.User" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="MinamotorModel.FK_Car_Currency" ManuallyRouted="false" />
+        <AssociationConnector Association="MinamotorModel.FK_Car_Make" ManuallyRouted="false" />
+        <AssociationConnector Association="MinamotorModel.FK_Car_Model" ManuallyRouted="false" />
+        <AssociationConnector Association="MinamotorModel.FK_CarList_Car" ManuallyRouted="false" />
+        <AssociationConnector Association="MinamotorModel.FK_CarList_CarList" ManuallyRouted="false" />
+        <AssociationConnector Association="MinamotorModel.FK_Model_Make" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="MinamotorModel.ErrorLog" Width="1.5" PointX="7.375" PointY="0.75" />
+        <EntityTypeShape EntityType="MinamotorModel.CarImage" Width="1.5" PointX="7.375" PointY="4.75" />
+        <EntityTypeShape EntityType="MinamotorModel.VehicleTrim" Width="1.5" PointX="5.25" PointY="14.125" />
+        <AssociationConnector Association="MinamotorModel.FK_VehicleTrim_Model" />
+        <AssociationConnector Association="MinamotorModel.FK_Car_VehicleTrim" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

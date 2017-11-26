@@ -1,0 +1,19 @@
+﻿@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <p class="lead">Using this system you can manage the cars list on the website</p>
+    <img src="~/Images/admin_homescreen.jpg" alt="admin home screen" width="800" height="450" />
+</div>
+
+
+
+@section scripts {
+    <script>
+        $(function () {
+            $("#homePageListItem").addClass("current-page");
+        })
+    </script>
+}

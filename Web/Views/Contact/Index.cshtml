@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Contact Us";
+}
+<h2>@ViewBag.Title</h2>
+
+<address>
+    Mina, Tripoli, Lebanon<br />
+    <abbr title="Phone">P:</abbr>
+    +961 3 978 228
+</address>
+
+<address>
+    <strong>Support:</strong>   <a href="mailto:Info@minamotor.com">Info@minamotor.com</a>
+</address>
+
+@section scripts {
+    <script>
+        $(function () {
+            $(".topMenu li").removeClass("active").addClass("inactive");
+            $(".contactListItem").removeClass("inactive").addClass("active");
+        })
+    </script>
+}

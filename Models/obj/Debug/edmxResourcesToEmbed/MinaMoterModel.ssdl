@@ -1,0 +1,271 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MinamotorModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Car">
+    <Key>
+      <PropertyRef Name="CarID" />
+    </Key>
+    <Property Name="CarID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ModelID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="MakeID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="VehicleTrimID" Type="uniqueidentifier" />
+    <Property Name="CurrencyID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Price" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="SmallImage" Type="nvarchar" MaxLength="250" />
+    <Property Name="LargeImage" Type="nvarchar" MaxLength="250" />
+    <Property Name="BodyStyle" Type="nvarchar" MaxLength="50" />
+    <Property Name="Mileage" Type="bigint" Nullable="false" />
+    <Property Name="Transmission" Type="int" Nullable="false" />
+    <Property Name="Engine" Type="nvarchar" MaxLength="50" />
+    <Property Name="Drivetrain" Type="nvarchar" MaxLength="50" />
+    <Property Name="ExteriorColor" Type="nvarchar" MaxLength="50" />
+    <Property Name="InteriorColor" Type="nvarchar" MaxLength="50" />
+    <Property Name="Doors" Type="nvarchar" MaxLength="50" />
+    <Property Name="Conditon" Type="int" Nullable="false" />
+    <Property Name="Year" Type="int" />
+    <Property Name="vin" Type="nvarchar" MaxLength="150" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="StandardEquipment" Type="nvarchar(max)" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CarImages">
+    <Key>
+      <PropertyRef Name="CarImagesID" />
+    </Key>
+    <Property Name="CarImagesID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CarID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Image" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CarList">
+    <Key>
+      <PropertyRef Name="CarListID" />
+    </Key>
+    <Property Name="CarListID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CarID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ListID" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Currency">
+    <Key>
+      <PropertyRef Name="CurrencyID" />
+    </Key>
+    <Property Name="CurrencyID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Symbol" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ErrorLog">
+    <Key>
+      <PropertyRef Name="ErrorLogID" />
+    </Key>
+    <Property Name="ErrorLogID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Message" Type="nvarchar(max)" />
+    <Property Name="InnerException" Type="nvarchar(max)" />
+    <Property Name="Controller" Type="nvarchar" MaxLength="50" />
+    <Property Name="Action" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="List">
+    <Key>
+      <PropertyRef Name="ListID" />
+    </Key>
+    <Property Name="ListID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="150" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Make">
+    <Key>
+      <PropertyRef Name="MakeID" />
+    </Key>
+    <Property Name="MakeID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="150" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Model">
+    <Key>
+      <PropertyRef Name="ModelID" />
+    </Key>
+    <Property Name="ModelID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="MakeID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="150" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VehicleTrim">
+    <Key>
+      <PropertyRef Name="VehicleTrimID" />
+    </Key>
+    <Property Name="VehicleTrimID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ModelID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="150" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Car_Currency">
+    <End Role="Currency" Type="Self.Currency" Multiplicity="1" />
+    <End Role="Car" Type="Self.Car" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Currency">
+        <PropertyRef Name="CurrencyID" />
+      </Principal>
+      <Dependent Role="Car">
+        <PropertyRef Name="CurrencyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Car_Make">
+    <End Role="Make" Type="Self.Make" Multiplicity="1" />
+    <End Role="Car" Type="Self.Car" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Make">
+        <PropertyRef Name="MakeID" />
+      </Principal>
+      <Dependent Role="Car">
+        <PropertyRef Name="MakeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Car_Model">
+    <End Role="Model" Type="Self.Model" Multiplicity="1" />
+    <End Role="Car" Type="Self.Car" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Model">
+        <PropertyRef Name="ModelID" />
+      </Principal>
+      <Dependent Role="Car">
+        <PropertyRef Name="ModelID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Car_VehicleTrim">
+    <End Role="VehicleTrim" Type="Self.VehicleTrim" Multiplicity="0..1" />
+    <End Role="Car" Type="Self.Car" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VehicleTrim">
+        <PropertyRef Name="VehicleTrimID" />
+      </Principal>
+      <Dependent Role="Car">
+        <PropertyRef Name="VehicleTrimID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CarList_Car">
+    <End Role="Car" Type="Self.Car" Multiplicity="1" />
+    <End Role="CarList" Type="Self.CarList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Car">
+        <PropertyRef Name="CarID" />
+      </Principal>
+      <Dependent Role="CarList">
+        <PropertyRef Name="CarID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CarList_CarList">
+    <End Role="List" Type="Self.List" Multiplicity="1" />
+    <End Role="CarList" Type="Self.CarList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="List">
+        <PropertyRef Name="ListID" />
+      </Principal>
+      <Dependent Role="CarList">
+        <PropertyRef Name="ListID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Model_Make">
+    <End Role="Make" Type="Self.Make" Multiplicity="1" />
+    <End Role="Model" Type="Self.Model" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Make">
+        <PropertyRef Name="MakeID" />
+      </Principal>
+      <Dependent Role="Model">
+        <PropertyRef Name="MakeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VehicleTrim_Model">
+    <End Role="Model" Type="Self.Model" Multiplicity="1" />
+    <End Role="VehicleTrim" Type="Self.VehicleTrim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Model">
+        <PropertyRef Name="ModelID" />
+      </Principal>
+      <Dependent Role="VehicleTrim">
+        <PropertyRef Name="ModelID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MinamotorModelStoreContainer">
+    <EntitySet Name="Car" EntityType="Self.Car" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CarImages" EntityType="Self.CarImages" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CarList" EntityType="Self.CarList" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Currency" EntityType="Self.Currency" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ErrorLog" EntityType="Self.ErrorLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="List" EntityType="Self.List" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Make" EntityType="Self.Make" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Model" EntityType="Self.Model" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VehicleTrim" EntityType="Self.VehicleTrim" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Car_Currency" Association="Self.FK_Car_Currency">
+      <End Role="Currency" EntitySet="Currency" />
+      <End Role="Car" EntitySet="Car" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Car_Make" Association="Self.FK_Car_Make">
+      <End Role="Make" EntitySet="Make" />
+      <End Role="Car" EntitySet="Car" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Car_Model" Association="Self.FK_Car_Model">
+      <End Role="Model" EntitySet="Model" />
+      <End Role="Car" EntitySet="Car" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Car_VehicleTrim" Association="Self.FK_Car_VehicleTrim">
+      <End Role="VehicleTrim" EntitySet="VehicleTrim" />
+      <End Role="Car" EntitySet="Car" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CarList_Car" Association="Self.FK_CarList_Car">
+      <End Role="Car" EntitySet="Car" />
+      <End Role="CarList" EntitySet="CarList" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CarList_CarList" Association="Self.FK_CarList_CarList">
+      <End Role="List" EntitySet="List" />
+      <End Role="CarList" EntitySet="CarList" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Model_Make" Association="Self.FK_Model_Make">
+      <End Role="Make" EntitySet="Make" />
+      <End Role="Model" EntitySet="Model" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VehicleTrim_Model" Association="Self.FK_VehicleTrim_Model">
+      <End Role="Model" EntitySet="Model" />
+      <End Role="VehicleTrim" EntitySet="VehicleTrim" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

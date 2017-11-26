@@ -1,0 +1,57 @@
+﻿@using Models;
+@model List<User>
+@{
+    ViewBag.Title = "User";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<p class="text-right">
+    <span class="green">@ViewBag.Message</span>
+    <button type="button" class="btn btn-primary" onclick="window.location.href='/Definitions/NewUser'">New</button>
+</p>
+@if (Model != null && Model.Count > 0)
+{
+    <table id="grid" class="display nowrap" cellspacing="0" style="width: 100%">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Full Name</th>
+                <th>IsActive</th>
+                <th>IsDeleted</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>Username</th>
+                <th>Full Name</th>
+                <th>IsActive</th>
+                <th>IsDeleted</th>
+                <th>Action</th>
+            </tr>
+        </tfoot>
+        <tbody>
+            @foreach (User item in Model)
+            {
+                <tr>
+                    <td>@item.Username</td>
+                    <td>@item.Name</td>
+                    <td>@(item.IsActive ? "Yes" : "No")</td>
+                    <td>@(item.IsDeleted ? "Yes" : "No")</td>
+                    <td><a href="@String.Concat("/Definitions/EditUser?id=", item.UserID)"><i class="fa fa-edit"></i></a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@section scripts {
+    <script>
+        $(function () {
+            $("#userListItem").addClass("current-page");
+            $('#grid').DataTable({
+                responsive: true
+            });
+        })
+    </script>
+}

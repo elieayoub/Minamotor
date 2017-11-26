@@ -1,0 +1,90 @@
+﻿@using Web.Helpers
+@{
+    DataHelper _dataHelper = Session["Global_DataHelper"] as DataHelper;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="Mina cars, lebanon cars, tripoli lebanon, tripoli cars, buy cars lebanon, Minamotor.com" />
+    <meta name="description" content="Minamotor.com Buy cars in Mina, tripoli, Lebanon" />
+    <meta property="og:url" content="http://www.minamotor.com/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Mina Motor" />
+    <meta property="og:description" content="Minamotor.com Buy cars in Mina, tripoli, Lebanon" />
+    <meta property="og:image" content="http://www.minamotor.com/Images/logo.png" />
+    <title>@ViewBag.Title - Minamotor.com</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="../slider/jquery.bxslider.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="fb-root"></div>
+    <script>
+(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.7";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+    <div class="header-section navbar-inverse">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 removePaddingLeft">
+                    <div class="navbar-brand removePaddingLeft">
+                        <div>
+                            <a href="/Home/Index">
+                                <img src="../Images/logo.png" alt="Mina Motor Logo" title="Mina Motor" class="logo">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 top-address">
+                    <div class="header-social-link">
+                        <ul class="list-unstyled social hover bg text-sm-center">
+                            <li><a class="facebook" data-toggle="tooltip" href="https://www.facebook.com/minatripolimotor/" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <p>&nbsp;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container topMenuContainer">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle navbar-inverse" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav topMenu">
+                <li class="inactive homeListItem">@Html.ActionLink("Home", "Index", "Home")</li>
+                <li class="inactive dropdownListItem">@Html.ActionLink("Inventory", "Index", "Inventory", new { Status = (int)DataHelper.CarStatus.Active, MakeID = "", ModelID = "", MinYear = 0, MaxYear = 0, MinPrice = 0, MaxPrice = 0 }, null)</li>
+                <li class="inactive aboutListItem">@Html.ActionLink("About Us", "Index", "About")</li>
+                <li class="inactive contactListItem">@Html.ActionLink("Contact Us", "Index", "Contact")</li>
+            </ul>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - MinaMotor.com</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/site")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

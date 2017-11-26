@@ -1,0 +1,88 @@
+﻿@using Models
+@model User
+@{
+    ViewBag.Title = "Edit User";
+}
+
+@using (Html.BeginForm("UpdateUser", "Definitions", FormMethod.Post, new { @novalidate = "novalidate", @class = "form-horizontal form-label-left" }))
+{
+    <div class="item form-group">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="Username">
+            Username <span class="required">*</span>
+        </label>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            @Html.TextBoxFor(m => m.Username, new { @class = "form-control", @required = "required" })
+        </div>
+    </div>
+    
+    <div class="item form-group">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="Password">
+            Password <span class="required">*</span>
+        </label>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            @Html.TextBoxFor(m => m.Password, new { @class = "form-control", @required = "required", @type = "password" })
+        </div>
+    </div>
+
+    <div class="item form-group">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="Name">
+            Full Name <span class="required">*</span>
+        </label>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @required = "required" })
+        </div>
+    </div>
+
+    <div class="item form-group">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="isactive">
+            Active
+        </label>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            @Html.CheckBoxFor(m => m.IsActive, new {})
+        </div>
+    </div>
+
+    <div class="item form-group">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="isdeleted">
+            Deleted
+        </label>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            @Html.CheckBoxFor(m => m.IsDeleted, new {})
+        </div>
+    </div>
+    @Html.HiddenFor(m => m.UserID)
+    
+    <div class="ln_solid"></div>
+    <div class="form-group">
+        <div class="col-md-6 col-md-offset-3 text-right">
+            <button id="btnCancel" type="button" class="btn btn-danger" onclick="window.location.href='/Definitions/UserManagement'">Cancel</button>
+            <button id="btnSubmit" type="submit" class="btn btn-success">Submit</button>
+        </div>
+    </div>
+}
+
+@section scripts {
+    <script type="text/javascript">
+        $(function () {
+            $("#Username").focus();
+            $("#userListItem").addClass("current-page");
+            $("#userListItem").parent().css("display", "block");
+            $("#userListItem").parent().parent().addClass("active");
+        })
+
+        $('form').submit(function (e) {
+            e.preventDefault();
+            var submit = true;
+
+            // evaluate the form using generic validaing
+            if (!validator.checkAll($(this))) {
+                submit = false;
+            }
+
+            if (submit)
+                this.submit();
+
+            return false;
+        });
+    </script>
+}

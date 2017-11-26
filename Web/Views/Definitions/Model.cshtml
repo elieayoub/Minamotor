@@ -1,0 +1,59 @@
+﻿@model List<Models.Custom.ModelView>
+@{
+    ViewBag.Title = "Model";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<p class="text-right">
+    <span class="green">@ViewBag.Message</span>
+    <button type="button" class="btn btn-primary" onclick="window.location.href='/Definitions/NewModel'">New</button>
+</p>
+@if (Model != null && Model.Count > 0)
+{
+    <table id="grid" class="display nowrap" cellspacing="0" style="width: 100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Make</th>
+                <th>IsActive</th>
+                <th>IsDeleted</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Make</th>
+                <th>IsActive</th>
+                <th>IsDeleted</th>
+                <th>Action</th>
+            </tr>
+        </tfoot>
+        <tbody>
+            @foreach (Models.Custom.ModelView item in Model)
+            {
+                <tr>
+                    <td>@item.model.Name</td>
+                    <td>@item.model.Description</td>
+                    <td>@item.makeName</td>
+                    <td>@(item.model.IsActive ? "Yes" : "No")</td>
+                    <td>@(item.model.IsDeleted ? "Yes" : "No")</td>
+                    <td><a href="@String.Concat("/Definitions/EditModel?id=", item.model.ModelID)"><i class="fa fa-edit"></i></a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@section scripts {
+    <script>
+        $(function () {
+            $("#modelListItem").addClass("current-page");
+            $('#grid').DataTable({
+                responsive: true
+            });
+        })
+    </script>
+}

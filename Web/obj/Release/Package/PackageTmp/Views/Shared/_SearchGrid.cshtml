@@ -1,0 +1,100 @@
+﻿@using Web.Models
+@model SearchGridView
+@{
+    string makeID = "", modelID = "", vehicleTrimID = "" ;
+    long minyear = 0, maxyear = 0, minprice = 0, maxprice = 0;
+    if (Model != null)
+    {
+        makeID = Model.MakeID;
+        modelID = Model.ModelID;
+        vehicleTrimID = Model.VehicleTrimID;
+        minyear = Model.MinYear;
+        maxyear = Model.MaxYear;
+        minprice = Model.MinPrice;
+        maxprice = Model.MaxPrice;
+    }
+}
+<div id="bookingForm" class="search-form no-border margin-none">
+    <div class="select-wrapper clearfix">
+        <form method="get" action="/inventory/">
+            @Html.Hidden("Status", (int)Web.Helpers.DataHelper.CarStatus.Active)
+            <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+                <h5>Make:</h5>
+                @Html.DropDownList("MakeID", ViewBag.MakeList as SelectList, "--Select--", new { @class = "form-control" })
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12 model-list">
+                <h5>Model:</h5>
+                <select class="form-control" id="ModelID" name="ModelID">
+                    <option value="" class="dontHide">--Select--</option>
+                    @if (string.IsNullOrEmpty(makeID))
+                    {
+                        foreach (Models.Model item in ViewBag.ModelList)
+                        {
+                            <option value="@item.ModelID" data-parentid="@item.MakeID" class="hide">@item.Name</option>
+                        }
+                    }
+                    else
+                    {
+                        foreach (Models.Model item in ViewBag.ModelList)
+                        {
+                            <option value="@item.ModelID" 
+                                    data-parentid="@item.MakeID" 
+                                    class="@(item.MakeID.ToString() != makeID ? "hide" : "")"
+                                    @((!string.IsNullOrEmpty(modelID) && modelID == @item.ModelID.ToString() ? "selected" : "")) >
+                                @item.Name
+                            </option>
+                        }
+                    }
+
+                </select>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12 vehicletrim-list">
+                <h5>Vehicle Trim:</h5>
+                <select class="form-control" id="VehicleTrimID" name="VehicleTrimID">
+                    <option value="" class="dontHide">--Select--</option>
+                    @if (string.IsNullOrEmpty(modelID))
+                    {
+                        foreach (Models.VehicleTrim item in ViewBag.VehicleTrimList)
+                        {
+                            <option value="@item.VehicleTrimID" data-parentid="@item.ModelID" class="hide">@item.Name</option>
+                        }
+                    }
+                    else
+                    {
+                        foreach (Models.VehicleTrim item in ViewBag.VehicleTrimList)
+                        {
+                            <option value="@item.VehicleTrimID"
+                                    data-parentid="@item.ModelID"
+                                    class="@(item.ModelID.ToString() != modelID ? "hide" : "")"
+                                    @((!string.IsNullOrEmpty(vehicleTrimID) && vehicleTrimID == @item.VehicleTrimID.ToString() ? "selected" : ""))>
+                                @item.Name
+                            </option>
+                        }
+                    }
+
+                </select>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+                <h5>Min Year:</h5>
+                <input type="number" class="form-control" id="minyear" name="minyear" value="@minyear" />
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+                <h5>Max Year:</h5>
+                <input type="number" class="form-control" id="maxyear" name="maxyear" value="@maxyear" />
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+                <h5>Min Price:</h5>
+                <input type="number" class="form-control" id="minprice" name="minprice" value="@minprice" />
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+                <h5>Max Price:</h5>
+                <input type="number" class="form-control" id="maxprice" name="maxprice" value="@maxprice" />
+            </div>
+            <p>&nbsp;</p>
+            <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12 text-right">
+                <input type="submit" value="Submit" class="btn btn-primary">
+            </div>
+            <p>&nbsp;</p>
+        </form>
+    </div>
+</div>

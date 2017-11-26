@@ -1,0 +1,287 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MinamotorModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Car">
+    <Key>
+      <PropertyRef Name="CarID" />
+    </Key>
+    <Property Name="CarID" Type="Guid" Nullable="false" />
+    <Property Name="ModelID" Type="Guid" Nullable="false" />
+    <Property Name="MakeID" Type="Guid" Nullable="false" />
+    <Property Name="CurrencyID" Type="Guid" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="BodyStyle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Mileage" Type="Int64" Nullable="false" />
+    <Property Name="Transmission" Type="Int32" Nullable="false" />
+    <Property Name="Engine" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Drivetrain" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ExteriorColor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="InteriorColor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Doors" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Conditon" Type="Int32" Nullable="false" />
+    <Property Name="Year" Type="Int32" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="StandardEquipment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Currency" Relationship="Self.FK_Car_Currency" FromRole="Car" ToRole="Currency" />
+    <NavigationProperty Name="Make" Relationship="Self.FK_Car_Make" FromRole="Car" ToRole="Make" />
+    <NavigationProperty Name="Model" Relationship="Self.FK_Car_Model" FromRole="Car" ToRole="Model" />
+    <NavigationProperty Name="CarLists" Relationship="Self.FK_CarList_Car" FromRole="Car" ToRole="CarList" />
+    <Property Name="SmallImage" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="LargeImage" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="vin" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="VehicleTrimID" Type="Guid" />
+    <NavigationProperty Name="VehicleTrim" Relationship="MinamotorModel.FK_Car_VehicleTrim" FromRole="Car" ToRole="VehicleTrim" />
+  </EntityType>
+  <EntityType Name="CarList">
+    <Key>
+      <PropertyRef Name="CarListID" />
+    </Key>
+    <Property Name="CarListID" Type="Guid" Nullable="false" />
+    <Property Name="CarID" Type="Guid" Nullable="false" />
+    <Property Name="ListID" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="Car" Relationship="Self.FK_CarList_Car" FromRole="CarList" ToRole="Car" />
+    <NavigationProperty Name="List" Relationship="Self.FK_CarList_CarList" FromRole="CarList" ToRole="List" />
+  </EntityType>
+  <EntityType Name="Currency">
+    <Key>
+      <PropertyRef Name="CurrencyID" />
+    </Key>
+    <Property Name="CurrencyID" Type="Guid" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Symbol" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Cars" Relationship="Self.FK_Car_Currency" FromRole="Currency" ToRole="Car" />
+  </EntityType>
+  <EntityType Name="List">
+    <Key>
+      <PropertyRef Name="ListID" />
+    </Key>
+    <Property Name="ListID" Type="Guid" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="CarLists" Relationship="Self.FK_CarList_CarList" FromRole="List" ToRole="CarList" />
+  </EntityType>
+  <EntityType Name="Make">
+    <Key>
+      <PropertyRef Name="MakeID" />
+    </Key>
+    <Property Name="MakeID" Type="Guid" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Cars" Relationship="Self.FK_Car_Make" FromRole="Make" ToRole="Car" />
+    <NavigationProperty Name="Models" Relationship="Self.FK_Model_Make" FromRole="Make" ToRole="Model" />
+  </EntityType>
+  <EntityType Name="Model">
+    <Key>
+      <PropertyRef Name="ModelID" />
+    </Key>
+    <Property Name="ModelID" Type="Guid" Nullable="false" />
+    <Property Name="MakeID" Type="Guid" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Cars" Relationship="Self.FK_Car_Model" FromRole="Model" ToRole="Car" />
+    <NavigationProperty Name="Make" Relationship="Self.FK_Model_Make" FromRole="Model" ToRole="Make" />
+    <NavigationProperty Name="VehicleTrims" Relationship="MinamotorModel.FK_VehicleTrim_Model" FromRole="Model" ToRole="VehicleTrim" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Guid" Nullable="false" />
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <Association Name="FK_Car_Currency">
+    <End Role="Currency" Type="Self.Currency" Multiplicity="1" />
+    <End Role="Car" Type="Self.Car" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Currency">
+        <PropertyRef Name="CurrencyID" />
+      </Principal>
+      <Dependent Role="Car">
+        <PropertyRef Name="CurrencyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Car_Make">
+    <End Role="Make" Type="Self.Make" Multiplicity="1" />
+    <End Role="Car" Type="Self.Car" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Make">
+        <PropertyRef Name="MakeID" />
+      </Principal>
+      <Dependent Role="Car">
+        <PropertyRef Name="MakeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Car_Model">
+    <End Role="Model" Type="Self.Model" Multiplicity="1" />
+    <End Role="Car" Type="Self.Car" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Model">
+        <PropertyRef Name="ModelID" />
+      </Principal>
+      <Dependent Role="Car">
+        <PropertyRef Name="ModelID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CarList_Car">
+    <End Role="Car" Type="Self.Car" Multiplicity="1" />
+    <End Role="CarList" Type="Self.CarList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Car">
+        <PropertyRef Name="CarID" />
+      </Principal>
+      <Dependent Role="CarList">
+        <PropertyRef Name="CarID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CarList_CarList">
+    <End Role="List" Type="Self.List" Multiplicity="1" />
+    <End Role="CarList" Type="Self.CarList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="List">
+        <PropertyRef Name="ListID" />
+      </Principal>
+      <Dependent Role="CarList">
+        <PropertyRef Name="ListID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Model_Make">
+    <End Role="Make" Type="Self.Make" Multiplicity="1" />
+    <End Role="Model" Type="Self.Model" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Make">
+        <PropertyRef Name="MakeID" />
+      </Principal>
+      <Dependent Role="Model">
+        <PropertyRef Name="MakeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Cars" EntityType="Self.Car" />
+    <EntitySet Name="CarLists" EntityType="Self.CarList" />
+    <EntitySet Name="Currencies" EntityType="Self.Currency" />
+    <EntitySet Name="Lists" EntityType="Self.List" />
+    <EntitySet Name="Makes" EntityType="Self.Make" />
+    <EntitySet Name="Models" EntityType="Self.Model" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <AssociationSet Name="FK_Car_Currency" Association="Self.FK_Car_Currency">
+      <End Role="Currency" EntitySet="Currencies" />
+      <End Role="Car" EntitySet="Cars" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Car_Make" Association="Self.FK_Car_Make">
+      <End Role="Make" EntitySet="Makes" />
+      <End Role="Car" EntitySet="Cars" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Car_Model" Association="Self.FK_Car_Model">
+      <End Role="Model" EntitySet="Models" />
+      <End Role="Car" EntitySet="Cars" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CarList_Car" Association="Self.FK_CarList_Car">
+      <End Role="Car" EntitySet="Cars" />
+      <End Role="CarList" EntitySet="CarLists" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CarList_CarList" Association="Self.FK_CarList_CarList">
+      <End Role="List" EntitySet="Lists" />
+      <End Role="CarList" EntitySet="CarLists" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Model_Make" Association="Self.FK_Model_Make">
+      <End Role="Make" EntitySet="Makes" />
+      <End Role="Model" EntitySet="Models" />
+    </AssociationSet>
+    <EntitySet Name="ErrorLogs" EntityType="MinamotorModel.ErrorLog" />
+    <EntitySet Name="CarImages" EntityType="MinamotorModel.CarImage" />
+    <EntitySet Name="VehicleTrims" EntityType="MinamotorModel.VehicleTrim" />
+    <AssociationSet Name="FK_VehicleTrim_Model" Association="MinamotorModel.FK_VehicleTrim_Model">
+      <End Role="Model" EntitySet="Models" />
+      <End Role="VehicleTrim" EntitySet="VehicleTrims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Car_VehicleTrim" Association="MinamotorModel.FK_Car_VehicleTrim">
+      <End Role="VehicleTrim" EntitySet="VehicleTrims" />
+      <End Role="Car" EntitySet="Cars" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="ErrorLog">
+    <Key>
+      <PropertyRef Name="ErrorLogID" />
+    </Key>
+    <Property Name="ErrorLogID" Type="Guid" Nullable="false" />
+    <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="InnerException" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Controller" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Action" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="CarImage">
+    <Key>
+      <PropertyRef Name="CarImagesID" />
+    </Key>
+    <Property Name="CarImagesID" Type="Guid" Nullable="false" />
+    <Property Name="CarID" Type="Guid" Nullable="false" />
+    <Property Name="Image" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="VehicleTrim">
+    <Key>
+      <PropertyRef Name="VehicleTrimID" />
+    </Key>
+    <Property Name="VehicleTrimID" Type="Guid" Nullable="false" />
+    <Property Name="ModelID" Type="Guid" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Model" Relationship="MinamotorModel.FK_VehicleTrim_Model" FromRole="VehicleTrim" ToRole="Model" />
+    <NavigationProperty Name="Cars" Relationship="MinamotorModel.FK_Car_VehicleTrim" FromRole="VehicleTrim" ToRole="Car" />
+  </EntityType>
+  <Association Name="FK_VehicleTrim_Model">
+    <End Type="MinamotorModel.Model" Role="Model" Multiplicity="1" />
+    <End Type="MinamotorModel.VehicleTrim" Role="VehicleTrim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Model">
+        <PropertyRef Name="ModelID" />
+      </Principal>
+      <Dependent Role="VehicleTrim">
+        <PropertyRef Name="ModelID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Car_VehicleTrim">
+    <End Type="MinamotorModel.VehicleTrim" Role="VehicleTrim" Multiplicity="0..1" />
+    <End Type="MinamotorModel.Car" Role="Car" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VehicleTrim">
+        <PropertyRef Name="VehicleTrimID" />
+      </Principal>
+      <Dependent Role="Car">
+        <PropertyRef Name="VehicleTrimID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
